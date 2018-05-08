@@ -1,7 +1,6 @@
 import java.util.*;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
-import java.io.FileWriter;
 
 Calendar cal = Calendar.getInstance();
 
