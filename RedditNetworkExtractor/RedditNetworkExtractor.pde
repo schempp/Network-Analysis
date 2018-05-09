@@ -293,9 +293,19 @@ ArrayList<Document> retrieveComments(ArrayList<Document> documents, String fileN
         jsonSize-=jsonSize;
       }
       
-      // HTTP request each comment by ID to retrieve author, subreddit, and content
-      JSONObject jsonObj2 = loadJSONObject(request3 + "ids=" + idQuery);
-      JSONArray jsonAr2 = jsonObj2.getJSONArray("data");
+      boolean requestTry = false;
+      JSONObject jsonObj2 = new JSONObject();
+      JSONArray jsonAr2 = new JSONArray();
+      
+      while (!requestTry) {
+        try {
+          // HTTP request each comment by ID to retrieve author, subreddit, and content
+          jsonObj2 = loadJSONObject(request3 + "ids=" + idQuery);
+          jsonAr2 = jsonObj2.getJSONArray("data");
+        } catch (Exception e) {
+          
+        }
+      }
       
       for (int k = 0; k < jsonAr2.size(); k++) {
         JSONObject tmpObj2 = jsonAr2.getJSONObject(k);
