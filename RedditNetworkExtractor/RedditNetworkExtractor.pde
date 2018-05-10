@@ -195,9 +195,14 @@ ArrayList<Document> retrieveDocList(ArrayList<Integer> queryList, String fileNam
         // if never encountered add
         submissionIDs.add(tmpObj.getString("id"));  
         
-        String selfText = tmpObj.getString("selftext");
-        selfText = selfText.replace("\n", " ");
-        selfText = selfText.replace("\r", " ");
+        String selfText = "";
+        try {
+          selfText = tmpObj.getString("selftext");  
+          selfText = selfText.replace("\n", " ");
+          selfText = selfText.replace("\r", " ");
+        } catch (Exception e) {
+          
+        }
         
         // create document
         Document tmpDoc = new Document(tmpObj.getString("id"),tmpObj.getString("url"),tmpObj.getString("title"),tmpObj.getString("selftext"));
