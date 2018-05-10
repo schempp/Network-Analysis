@@ -302,6 +302,7 @@ ArrayList<Document> retrieveComments(ArrayList<Document> documents, String fileN
           // HTTP request each comment by ID to retrieve author, subreddit, and content
           jsonObj2 = loadJSONObject(request3 + "ids=" + idQuery);
           jsonAr2 = jsonObj2.getJSONArray("data");
+          requestTry = true;
         } catch (Exception e) {
           
         }
